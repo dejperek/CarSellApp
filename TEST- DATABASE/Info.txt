@@ -1,0 +1,3 @@
+Jest to testowa baza danych, stworzona by móc wytestować wszystkie opcje aplikacji.
+Hasło do konta1 = 'sedes123'
+Hasło do konta2 = 'qwerty123'
