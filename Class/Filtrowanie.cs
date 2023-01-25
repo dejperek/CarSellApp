@@ -15,12 +15,5 @@ namespace CarSellApp
         public string filtrPrzebiegOd, filtrPrzebiegDo;
         public string filtrCenaOd, filtrCenaDo;
         public string filtrRokProdOd, filtrRokProdDo;
-
-        public void ZamianaNaWarunki()
-        {
-            //if(filtrPrzebiegOd == "")
-
-        }
-
     }
 }

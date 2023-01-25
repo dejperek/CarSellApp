@@ -19,6 +19,7 @@ namespace CarSellApp
 
         public DbOperation()
         {
+            //Podaj swoją ścieżkę do bazy danych
             sourceData = "Data Source=QWENT1661;Initial Catalog=CarSellApp;Integrated Security=True";
             connection = new SqlConnection(sourceData);
         }
@@ -145,7 +146,6 @@ namespace CarSellApp
 
         public List<Ogloszenia> PobierzObserwowaneOgloszenia(int idKonta)
         {
-            //string test = "";
             List<Ogloszenia> ogloszenia = new List<Ogloszenia>();
             try
             {
@@ -160,19 +160,13 @@ namespace CarSellApp
 
                 for (int i = 0; i < rowsKonta.Length; i++)
                 {
-                    
-                    //Console.WriteLine($"{sqlZap} {rowsKonta[i]["idOgloszenia"]}");
                     sqlCommand = new SqlCommand($"{sqlZap} {rowsKonta[i]["idOgloszenia"]}", connection);
                     sqlCommand.ExecuteNonQuery();
                     dataTable = new DataTable();
                     dataAdapter = new SqlDataAdapter(sqlCommand);
                     dataAdapter.Fill(dataTable);
                     DataRow[] rowsOgloszeniaObserwowane = dataTable.Select();
-                    /*
-                    Console.WriteLine("Ktory wiersz: " + i + "\n");
-                    Console.WriteLine("Ktore id ogloszenia: " + rowsKonta[i]["idOgloszenia"] + "\n");
-                    Console.WriteLine($"{sqlZap} {rowsKonta[i]["idOgloszenia"]}");
-                    */
+
                     Ogloszenia ogloszenie = new Ogloszenia();
                     ogloszenie.idOgloszenia = int.Parse(rowsOgloszeniaObserwowane[0]["id"].ToString());
                     ogloszenie.idSprzedajacego = int.Parse(rowsOgloszeniaObserwowane[0]["idKonta"].ToString());
@@ -231,7 +225,6 @@ namespace CarSellApp
 
         public bool DodajDoObserwowanych(int idOgloszenia, int idKonta)
         {
-            //return $"INSERT INTO ObserwowaneOgloszenia VALUES ({idKonta}, {idOgloszenia})";
             bool dodanie = false;
             try
             {
@@ -254,7 +247,6 @@ namespace CarSellApp
 
         public bool DodajOgloszenie(Ogloszenia ogloszenie)
         {
-            //return $"INSERT INTO Ogloszenia VALUES ({ogloszenie.idSprzedajacego}, '{ogloszenie.tytul}', '{ogloszenie.opis}', {ogloszenie.przebieg}, {ogloszenie.marka}, {ogloszenie.model}, {ogloszenie.typ}, {ogloszenie.dataProdukcji}, '{ogloszenie.kolor}', {ogloszenie.rodzajPaliwa}, {ogloszenie.bezWypadkowy}, {ogloszenie.stan}, {ogloszenie.cena})";
             bool dodanie = false;
             try
             {

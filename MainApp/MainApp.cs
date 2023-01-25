@@ -18,7 +18,6 @@ namespace CarSellApp
         public string emailKonta;
         public string telKonta;
         public bool changePass = false;
-
         private int idSprzedajacego;
 
         public Panel testowyPanel = new Panel();
@@ -261,7 +260,6 @@ namespace CarSellApp
         private void buttonObs_Click(object sender, EventArgs e)
         {
             DbOperation operacje = new DbOperation();
-            //MessageBox.Show(operacje.DodajDoObserwowanych(idSprzedajacego, idKonta));
             if (operacje.DodajDoObserwowanych(idSprzedajacego, idKonta))
                 MessageBox.Show("Dodane do obserwowanych ogłoszeń");
             else
@@ -275,13 +273,11 @@ namespace CarSellApp
             {
                 ktorytBtn(buttonObsOgloszenia);
                 testowyPanel.Enabled = false;
-                //MainApp.ActiveForm.Controls.Remove(testowyPanel);
                 buttonDelObserowane.Visible = true;
                 buttonObs.Visible = false;
                 nrOgloszenia = 0;
                 ogloszenia = operacje.PobierzObserwowaneOgloszenia(idKonta);
                 UploadOgloszenia(ogloszenia, nrOgloszenia);
-                //MessageBox.Show(operacje.PobierzObserwowaneOgloszenia(idKonta));
             }
             else
                 MessageBox.Show("Nie masz żadnych zaobserwowanych ogłoszeń");
@@ -290,7 +286,6 @@ namespace CarSellApp
 
         private void buttonOgloszenia_Click(object sender, EventArgs e)
         {
-            //MainApp.ActiveForm.Controls.Add(testowyPanel);
             testowyPanel.Enabled = true;
             ktorytBtn(buttonOgloszenia);
             labelEmail.Text = emailKonta;
@@ -320,13 +315,11 @@ namespace CarSellApp
             {
                 ktorytBtn(buttonMyOgl);
                 testowyPanel.Enabled = false;
-                //MainApp.ActiveForm.Controls.Remove(testowyPanel);
                 buttonDelObserowane.Visible = true;
                 buttonObs.Visible = false;
                 nrOgloszenia = 0;
                 ogloszenia = operacje.PobierzMojeOgloszenia(idKonta);
                 UploadOgloszenia(ogloszenia, nrOgloszenia);
-                //MessageBox.Show(operacje.PobierzObserwowaneOgloszenia(idKonta));
             }
             else
                 MessageBox.Show("Nie masz żadnych ogłoszeń");
@@ -344,13 +337,11 @@ namespace CarSellApp
                     {
                         if (operacje.SprawdzObserwowaneOgloszenia(idKonta) != 0)
                         {
-                            //MainApp.ActiveForm.Controls.Remove(testowyPanel);
                             buttonDelObserowane.Visible = true;
                             buttonObs.Visible = false;
                             nrOgloszenia = 0;
                             ogloszenia = operacje.PobierzObserwowaneOgloszenia(idKonta);
                             UploadOgloszenia(ogloszenia, nrOgloszenia);
-                            //MessageBox.Show(operacje.PobierzObserwowaneOgloszenia(idKonta));
                         }
                         else
                             MessageBox.Show("Nie masz żadnych zaobserwowanych ogłoszeń");
@@ -365,13 +356,11 @@ namespace CarSellApp
                     {
                         if (operacje.SprawdzMojeOgloszenia(idKonta) != 0)
                         {
-                            //MainApp.ActiveForm.Controls.Remove(testowyPanel);
                             buttonDelObserowane.Visible = true;
                             buttonObs.Visible = false;
                             nrOgloszenia = 0;
                             ogloszenia = operacje.PobierzMojeOgloszenia(idKonta);
                             UploadOgloszenia(ogloszenia, nrOgloszenia);
-                            //MessageBox.Show(operacje.PobierzObserwowaneOgloszenia(idKonta));
                         }
                         else
                             MessageBox.Show("Nie masz żadnych ogłoszeń");

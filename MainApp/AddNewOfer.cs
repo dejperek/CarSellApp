@@ -17,14 +17,6 @@ namespace CarSellApp
             InitializeComponent();
         }
 
-        bool checkLenght(int ile, TextBox text)
-        {
-            if (text.Text.Length <= ile)
-                return true;
-            else 
-                return false;
-        }
-
         private void buttonBack_Click(object sender, EventArgs e)
         {
             AddNewOfer.ActiveForm.Close();
@@ -125,7 +117,6 @@ namespace CarSellApp
             ogloszenie.bezWypadkowy = checkBoxBezwypadkowy.CheckState == CheckState.Checked ? 1 : 0;
             ogloszenie.stan = (operacje.PobierzIdDoFiltracji("StanAuta", $"'{listBoxStan.SelectedItem}'")).ToString();
             ogloszenie.cena = textBoxCena.Text.Replace(",", ".");
-            //MessageBox.Show(operacje.DodajOgloszenie(ogloszenie));
             
             if (operacje.DodajOgloszenie(ogloszenie))
             {
